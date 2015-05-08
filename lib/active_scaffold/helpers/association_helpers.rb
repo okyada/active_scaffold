@@ -14,7 +14,7 @@ module ActiveScaffold
       def options_for_association(association, include_all = false)
         available_records = association_options_find(association, include_all ? nil : options_for_association_conditions(association))
         available_records ||= []
-        available_records.sort{|a,b| a.to_label <=> b.to_label}.collect { |model| [ model.to_label, model.id ] }
+        available_records.collect { |model| [ model.to_label, model.id ] }
       end
 
       def options_for_association_count(association)

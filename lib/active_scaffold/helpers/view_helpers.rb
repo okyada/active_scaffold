@@ -340,10 +340,12 @@ module ActiveScaffold
           header_message = if options.include?(:header_message)
             options[:header_message]
           else
-            as_('errors.template.header', :count => count, :model => options[:object_name].to_s.gsub('_', ' '))
+            # as_('errors.template.header', :count => count, :model => options[:object_name].to_s.gsub('_', ' '))
+            "入力エラーが発生しました"
           end
 
-          message = options.include?(:message) ? options[:message] : as_('errors.template.body')
+          # message = options.include?(:message) ? options[:message] : as_('errors.template.body')
+          message = options.include?(:message) ? options[:message] : "確認して下さい"
 
           error_messages = objects.sum do |object|
             object.errors.full_messages.map do |msg|

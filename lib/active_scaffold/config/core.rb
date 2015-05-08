@@ -113,8 +113,8 @@ module ActiveScaffold::Config
       @actions = self.class.actions.clone
 
       # create a new default columns datastructure, since it doesn't make sense before now
-      attribute_names = self.model.columns.collect{ |c| c.name.to_sym }.sort_by { |c| c.to_s }
-      association_column_names = self.model.reflect_on_all_associations.collect{ |a| a.name.to_sym }.sort_by { |c| c.to_s }
+      attribute_names = self.model.columns.collect{ |c| c.name.to_sym }
+      association_column_names = self.model.reflect_on_all_associations.collect{ |a| a.name.to_sym }
       @columns = ActiveScaffold::DataStructures::Columns.new(self.model, attribute_names + association_column_names)
 
       # and then, let's remove some columns from the inheritable set.

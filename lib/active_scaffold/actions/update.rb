@@ -106,7 +106,7 @@ module ActiveScaffold::Actions
     end
 
     def do_update_column
-      @record = active_scaffold_config.model.find(params[:id])
+      @record = find_if_allowed(params[:id], :read)
       if @record.authorized_for?(:crud_type => :update, :column => params[:column])
         column = active_scaffold_config.columns[params[:column].to_sym]
         params[:value] ||= @record.column_for_attribute(params[:column]).default unless @record.column_for_attribute(params[:column]).nil? || @record.column_for_attribute(params[:column]).null
