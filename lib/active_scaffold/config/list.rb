@@ -99,6 +99,11 @@ module ActiveScaffold::Config
       @filtered_message ? @filtered_message : :filtered
     end
     
+    attr_writer :items_callback
+    def items_callback
+      @items_callback
+    end
+
     attr_writer :always_show_search
     def always_show_search
       @always_show_search && !search_partial.blank?
